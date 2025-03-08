@@ -13,11 +13,24 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      overflow: auto; /* Enable scrolling */
     }
 
     h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Great Vibes', cursive; /* Elegant font */
       color: #f4d58d; /* Gold */
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     a {
@@ -29,100 +42,210 @@
       text-decoration: underline;
     }
 
-    /* Header Section */
-    header {
-      background: url('https://cdn.leonardo.ai/users/b56e6024-0c36-4ad2-ac0a-607a36e9d232/generations/782fa3a8-8534-4801-8022-18d623625a67/variations/Default_Stylish_and_exquisitely_attractive_vivid_Blue_and_glos_2_782fa3a8-8534-4801-8022-18d623625a67_0.jpg') no-repeat center center/cover;
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
-      position: relative;
-    }
-
-    header h1 {
-      font-size: 4rem;
-      margin: 0;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    header p {
-      font-size: 1.5rem;
-      margin: 10px 0 0;
-      animation: fadeIn 3s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Main Content */
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background: rgba(10, 35, 66, 0.9); /* Semi-transparent Royal Blue */
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .menu, .rsvp-form {
-      margin: 40px 0;
-    }
-
-    .menu ul, .rsvp-form ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .menu li, .rsvp-form li {
-      margin: 10px 0;
-      font-size: 1.1rem;
-    }
-
-    /* RSVP Form */
-    .rsvp-form input, .rsvp-form textarea, .rsvp-form button {
+    /* Background Image */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #f4d58d; /* Gold */
-      border-radius: 5px;
-      font-size: 1rem;
-      background-color: #0a2342; /* Royal Blue */
-      color: #f4d58d; /* Gold */
+      height: 100%;
+      background: url('https://cdn.leonardo.ai/users/b56e6024-0c36-4ad2-ac0a-607a36e9d232/generations/782fa3a8-8534-4801-8022-18d623625a67/variations/Default_Stylish_and_exquisitely_attractive_vivid_Blue_and_glos_2_782fa3a8-8534-4801-8022-18d623625a67_0.jpg') no-repeat center center/cover;
+      opacity: 0.8;
+      z-index: -1;
     }
 
-    .rsvp-form button {
-      background-color: #f4d58d; /* Gold */
-      color: #0a2342; /* Royal Blue */
-      border: none;
+    /* Glass Effect for Containers */
+    .container, .rsvp-button {
+      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+      backdrop-filter: blur(10px) brightness(0.9); /* Frosted glass effect */
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.3), /* Outer shadow */
+        inset 0 2px 4px rgba(255, 255, 255, 0.2), /* Inner highlight */
+        inset 0 -2px 4px rgba(0, 0, 0, 0.2); /* Inner shadow */
+      padding: 20px;
+      margin: 20px;
+      width: 90%;
+      max-width: 800px;
+      position: relative;
+      overflow: hidden;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* 3D Edge Effect */
+    .container::before, .container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      pointer-events: none;
+    }
+
+    .container::before {
+      box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.3), /* Edge highlight */
+        0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .container::after {
+      box-shadow: 
+        inset 0 0 10px rgba(255, 255, 255, 0.2), /* Inner edge highlight */
+        inset 0 0 20px rgba(0, 0, 0, 0.2); /* Inner edge shadow */
+    }
+
+    /* Button Styles */
+    .button-wrap {
+      position: relative;
+      z-index: 2;
+      border-radius: 999vw;
+      background: transparent;
+      pointer-events: none;
+      transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .button-shadow {
+      --shadow-cuttoff-fix: 2em;
+      position: absolute;
+      width: calc(100% + var(--shadow-cuttoff-fix));
+      height: calc(100% + var(--shadow-cuttoff-fix));
+      top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+      left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+      filter: blur(clamp(2px, 0.125em, 12px));
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .button-shadow::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      border-radius: 999vw;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+      width: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+      height: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+      top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+      left: calc(var(--shadow-cuttoff-fix) - 0.875em);
+      padding: 0.125em;
+      box-sizing: border-box;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+      opacity: 1;
+    }
+
+    button {
+      --border-width: clamp(1px, 0.0625em, 4px);
+      all: unset;
       cursor: pointer;
-      transition: background-color 0.3s;
+      position: relative;
+      pointer-events: auto;
+      z-index: 3;
+      background: rgba(255, 255, 255, 0.1); /* Glass effect */
+      border-radius: 999vw;
+      box-shadow: 
+        inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+        0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+        0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
+        0 0 0 0 rgba(255, 255, 255, 1);
+      backdrop-filter: blur(10px); /* Glass effect */
+      transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .rsvp-form button:hover {
-      background-color: #d4b56a; /* Darker Gold */
+    button:hover {
+      transform: scale(0.975);
+      backdrop-filter: blur(15px); /* Enhanced glass effect on hover */
+      box-shadow: 
+        inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+        0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.25),
+        0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.5),
+        0 0 0 0 rgba(255, 255, 255, 1);
+    }
+
+    button span {
+      position: relative;
+      display: block;
+      user-select: none;
+      font-family: "Inter", sans-serif;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+      font-size: 1em;
+      color: rgba(50, 50, 50, 1);
+      text-shadow: 0em 0.25em 0.05em rgba(0, 0, 0, 0.1);
+      transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+      padding-inline: 1.5em;
+      padding-block: 0.875em;
+    }
+
+    button:hover span {
+      text-shadow: 0.025em 0.025em 0.025em rgba(0, 0, 0, 0.12);
     }
 
     /* Footer */
     footer {
       text-align: center;
       padding: 20px;
-      background: #0a2342; /* Royal Blue */
+      background: rgba(10, 35, 66, 0.9); /* Semi-transparent Royal Blue */
       color: #f4d58d; /* Gold */
       margin-top: 40px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px); /* Glass effect */
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     footer p {
       margin: 0;
     }
+
+    /* Confetti Animation */
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #f4d58d; /* Gold */
+      border-radius: 50%;
+      animation: confetti 2s ease-out infinite;
+    }
+
+    @keyframes confetti {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
   </style>
+  <!-- Add Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Confetti Animation -->
+  <div class="confetti" id="confetti"></div>
+
   <!-- Header -->
   <header>
-    <h1>🎉✨ You’re Cordially Invited to a Spectacular Khmer-Style Celebration! ✨🎉</h1>
-    <center>For </center>
-    <p>Tania’s 21st Birthday!!!</p>
+    <h2>🎉✨ You’re Cordially Invited to a Spectacular Khmer-Style Celebration! ✨🎉</h2>
+    <h1>Tania’s 21st Birthday Celebration</h1>
   </header>
 
   <!-- Main Content -->
@@ -136,7 +259,7 @@
     <p>Sunday, April 6th at 2:00 PM</p>
 
     <h3>📍 Venue</h3>
-    <p>The Em-Morrison / Reid’s Place<br>645 Coronado Ave. Unit A, Long Beach, CA</p>
+    <p>The Morrison-Em / Reid’s Place<br>645 Coronado Ave. Unit A, Long Beach</p>
 
     <h3>🍽️ Menu of the Day</h3>
     <div class="menu">
@@ -154,13 +277,15 @@
     </p>
 
     <h3>💌 RSVP</h3>
-    <div class="rsvp-form">
-      <form action="mailto:em_tatianna@yahoo.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Will you bring drinks or appetizers? Let us know!" rows="4"></textarea>
-        <button type="submit">RSVP Now</button>
-      </form>
+    <div class="rsvp-button">
+      <div class="button-wrap">
+        <a href="mailto:em_tatianna@yahoo.com?subject=RSVP for Tania's 21st Birthday&body=Hi Chad & Tatianna,%0D%0A%0D%0AI'm excited to attend Tania's 21st Birthday Celebration!%0D%0A%0D%0AName: [Your Name]%0D%0AWill I bring drinks or appetizers? [Yes/No - Details]%0D%0A%0D%0ACan't wait to celebrate!">
+          <button>
+            <span>RSVP Now</span>
+          </button>
+        </a>
+        <div class="button-shadow"></div>
+      </div>
     </div>
 
     <p>Kindly confirm your attendance by <strong>April 1st</strong>. We can’t wait to celebrate this milestone with you in true Khmer style—elegant, joyful, and unforgettable. Come hungry, leave happy, and let’s make this a day Tania will treasure forever!</p>
@@ -172,7 +297,29 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2023 Tania’s 21st Birthday Celebration</p>
+    <p>© 2025 Tania’s 21st Birthday Celebration</p>
   </footer>
+
+  <!-- JavaScript for Confetti -->
+  <script>
+    const confettiContainer = document.getElementById('confetti');
+
+    function createConfetti() {
+      const confettiPiece = document.createElement('div');
+      confettiPiece.classList.add('confetti-piece');
+      confettiPiece.style.left = `${Math.random() * 100}vw`;
+      confettiPiece.style.animationDuration = `${Math.random() * 2 + 1}s`;
+      confettiContainer.appendChild(confettiPiece);
+
+      setTimeout(() => {
+        confettiPiece.remove();
+      }, 2000);
+    }
+
+    // Generate confetti on page load
+    for (let i = 0; i < 100; i++) {
+      setTimeout(createConfetti, Math.random() * 1000);
+    }
+  </script>
 </body>
 </html>
