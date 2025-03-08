@@ -1,175 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tania’s 21st Birthday Invitation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tania's 21st Birthday Celebration</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f9f5e3;
+      color: #4a2c2a;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
 
-    <!-- Styles -->
-    <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #001F3F, #123456);
-            color: white;
-            text-align: center;
-            overflow: hidden;
-        }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: #8b572a;
+    }
 
-        /* Background Parallax Effect */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('your-background-image.jpg') no-repeat center center/cover;
-            filter: blur(8px);
-            transform: scale(1.1);
-            z-index: -1;
-        }
+    a {
+      color: #8b572a;
+      text-decoration: none;
+    }
 
-        /* Glassmorphism Card */
-        .card {
-            width: 90%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.12);
-            padding: 25px;
-            margin: 50px auto;
-            border-radius: 20px;
-            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.3);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            animation: fadeIn 1.5s ease-in-out;
-        }
+    a:hover {
+      text-decoration: underline;
+    }
 
-        /* Animated Heading */
-        .header {
-            font-size: 30px;
-            font-weight: bold;
-            text-shadow: 0px 0px 12px rgba(255, 215, 0, 0.8);
-            animation: glow 2s infinite alternate;
-        }
+    /* Header Section */
+    header {
+      background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+    }
 
-        @keyframes glow {
-            0% { text-shadow: 0px 0px 12px rgba(255, 215, 0, 0.8); }
-            100% { text-shadow: 0px 0px 20px rgba(255, 255, 255, 1); }
-        }
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      animation: fadeIn 2s ease-in-out;
+    }
 
-        /* Animated RSVP Button */
-        .rsvp-btn {
-            display: inline-block;
-            padding: 12px 20px;
-            margin-top: 15px;
-            font-size: 16px;
-            color: white;
-            background: linear-gradient(90deg, #ffcc00, #ff9900);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    header p {
+      font-size: 1.5rem;
+      margin: 10px 0 0;
+      animation: fadeIn 3s ease-in-out;
+    }
 
-        .rsvp-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-        /* Smooth Fade In */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .card {
-                width: 95%;
-            }
-        }
-    </style>
+    .menu, .rsvp-form {
+      margin: 40px 0;
+    }
+
+    .menu ul, .rsvp-form ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu li, .rsvp-form li {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    /* RSVP Form */
+    .rsvp-form input, .rsvp-form textarea, .rsvp-form button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .rsvp-form button {
+      background-color: #8b572a;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .rsvp-form button:hover {
+      background-color: #6b4220;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #8b572a;
+      color: white;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <h1>🎉✨ You’re Cordially Invited! ✨🎉</h1>
+    <p>Tania’s 21st Birthday Celebration</p>
+  </header>
 
-    <!-- 3D Floating Gold Particles -->
-    <canvas id="backgroundCanvas"></canvas>
+  <!-- Main Content -->
+  <div class="container">
+    <h2>Dear Family & Friends,</h2>
+    <p>
+      It is with great joy and elegance that we invite you to a truly enchanting event—<strong>Tania’s 21st Birthday Celebration</strong>! This will be a <strong>traditional Khmer sarong party</strong>, where culture, beauty, and festivity come together in perfect harmony.
+    </p>
 
-    <!-- Invitation Card -->
-    <div class="card">
-        <p class="header">🎉✨ You’re Cordially Invited to a Spectacular Khmer-Style Celebration! ✨🎉</p>
-        
-        <p>Dear Family & Friends,</p>
-        <p>It is with great joy and elegance that we invite you to a truly enchanting event—<strong>Tania’s 21st Birthday Celebration</strong>! This will be a <strong>traditional Khmer sarong party</strong>, where culture, beauty, and festivity come together in perfect harmony.</p>
+    <h3>📅 Date & Time</h3>
+    <p>Sunday, April 6th at 2:00 PM</p>
 
-        <p>📅 <strong>Date:</strong> Sunday, April 6th</p>
-        <p>⏰ <strong>Time:</strong> 2:00 PM</p>
-        <p>📍 <strong>Venue:</strong> The Em-Morrison / Reid’s Place<br>645 Coronado Ave. Unit A, Long Beach, CA</p>
+    <h3>📍 Venue</h3>
+    <p>The Em-Morrison / Reid’s Place<br>645 Coronado Ave. Unit A, Long Beach, CA</p>
 
-        <p><strong>🍽️ Menu of the Day:</strong></p>
-        <ul style="list-style: none; padding: 0;">
-            <li>✔️ Pho (Aromatic and comforting)</li>
-            <li>✔️ Musubi (Savory and satisfying)</li>
-            <li>✔️ BBQ Pork (Sweet, smoky, and succulent)</li>
-            <li>✔️ Veggie Kabobs (Fresh and vibrant)</li>
-        </ul>
-
-        <p>💌 <strong>RSVP by April 1st!</strong></p>
-        <a href="mailto:your@email.com?subject=RSVP for Tania’s 21st Birthday" class="rsvp-btn">Confirm Attendance</a>
-
-        <p>With warmest regards,<br><strong>Chad & Tatianna</strong></p>
-        <p><strong>P.S.</strong> Don’t forget to bring your sarong and your brightest smile! 🌸</p>
+    <h3>🍽️ Menu of the Day</h3>
+    <div class="menu">
+      <ul>
+        <li><strong>Pho</strong> (Aromatic and comforting)</li>
+        <li><strong>Musubi</strong> (Savory and satisfying)</li>
+        <li><strong>BBQ Pork</strong> (Sweet, smoky, and succulent)</li>
+        <li><strong>Veggie Kabobs</strong> (Fresh and vibrant)</li>
+      </ul>
     </div>
 
-    <!-- GSAP for Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r136/three.min.js"></script>
+    <h3>🎁 Gift Idea</h3>
+    <p>
+      As Tania is saving for her car, <strong>monetary contributions are preferred</strong>. However, your presence and good vibes are the greatest gifts of all!
+    </p>
 
-    <script>
-        // GSAP Animations
-        gsap.from(".card", { duration: 1.5, opacity: 0, y: 50, ease: "power2.out" });
+    <h3>💌 RSVP</h3>
+    <div class="rsvp-form">
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Will you bring drinks or appetizers? Let us know!" rows="4"></textarea>
+        <button type="submit">RSVP Now</button>
+      </form>
+    </div>
 
-        // Parallax Background Effect
-        document.addEventListener("mousemove", (e) => {
-            let x = (e.clientX / window.innerWidth - 0.5) * 10;
-            let y = (e.clientY / window.innerHeight - 0.5) * 10;
-            document.body.style.backgroundPosition = `${x}px ${y}px`;
-        });
+    <p>Kindly confirm your attendance by <strong>April 1st</strong>. We can’t wait to celebrate this milestone with you in true Khmer style—elegant, joyful, and unforgettable. Come hungry, leave happy, and let’s make this a day Tania will treasure forever!</p>
 
-        // 3D Floating Particles using Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("backgroundCanvas"), alpha: true });
+    <p>With warmest regards,<br><strong>Chad & Tatianna</strong></p>
 
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+    <p><strong>P.S.</strong> Don’t forget to bring your sarong and your brightest smile! 🌸</p>
+  </div>
 
-        // Create Particles
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 500;
-        const positions = new Float32Array(particlesCount * 3);
-
-        for (let i = 0; i < particlesCount * 3; i++) {
-            positions[i] = (Math.random() - 0.5) * 10;
-        }
-
-        particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-        const particlesMaterial = new THREE.PointsMaterial({ color: 0xffd700, size: 0.05 });
-        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particles);
-
-        camera.position.z = 5;
-
-        // Animate Particles
-        function animateParticles() {
-            requestAnimationFrame(animateParticles);
-            particles.rotation.y += 0.0005;
-            renderer.render(scene, camera);
-        }
-        animateParticles();
-    </script>
-
+  <!-- Footer -->
+  <footer>
+    <p>© 2023 Tania’s 21st Birthday Celebration</p>
+  </footer>
 </body>
 </html>
