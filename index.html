@@ -276,17 +276,23 @@
       As Tania is saving for her car, <strong>monetary contributions are preferred</strong>. However, your presence and good vibes are the greatest gifts of all!
     </p>
 
-    <h3>💌 RSVP</h3>
-    <div class="rsvp-button">
-      <div class="button-wrap">
-        <a href="mailto:em_tatianna@yahoo.com?subject=RSVP for Tania's 21st Birthday&body=Hi Chad & Tatianna,%0D%0A%0D%0AI'm excited to attend Tania's 21st Birthday Celebration!%0D%0A%0D%0AName: [Your Name]%0D%0AWill I bring drinks or appetizers? [Yes/No - Details]%0D%0A%0D%0ACan't wait to celebrate!">
-          <button>
-            <span>RSVP Now</span>
-          </button>
-        </a>
-        <div class="button-shadow"></div>
-      </div>
-    </div>
+    
+
+    <!-- Button Wrapper -->
+<div class="button-wrap">
+    <button onclick="rsvpEmail()">
+        <span>RSVP Now</span>
+    </button>
+    <div class="button-shadow"></div>
+</div>
+
+<!-- JavaScript to Open Email with Pre-Filled RSVP Content -->
+<script>
+    function rsvpEmail() {
+        window.location.href = "mailto:em_tatianna@yahoo.com?subject=RSVP for Tania’s 21st Birthday&body=Dear Chad & Tatianna,%0D%0A%0D%0AI would love to RSVP for Tania's 21st Birthday! Here are my details:%0D%0A%0D%0A👤 Full Name: %0D%0A👥 Guest Count: %0D%0A🥂 I will be bringing (drinks/appetizers): %0D%0A%0D%0A🎉 Looking forward to celebrating this special day!%0D%0A%0D%0AWith best regards,%0D%0A[Your Name Here]";
+    }
+</script>
+
 
     <p>Kindly confirm your attendance by <strong>April 1st</strong>. We can’t wait to celebrate this milestone with you in true Khmer style—elegant, joyful, and unforgettable. Come hungry, leave happy, and let’s make this a day Tania will treasure forever!</p>
 
