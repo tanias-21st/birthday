@@ -1,0 +1,103 @@
+/* Root Variables */
+:root {
+    --gold-gradient: linear-gradient(135deg, #ffcc00, #ff9900);
+    --blue-gradient: linear-gradient(135deg, #001F3F, #0055AA);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --button-glow: rgba(255, 215, 0, 0.8);
+    --hover-glow: rgba(255, 215, 0, 1);
+    --hover-time: 300ms;
+}
+
+/* Button Wrapper */
+.button-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    z-index: 2;
+}
+
+/* Glassmorphism Button */
+button {
+    all: unset;
+    cursor: pointer;
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 40px;
+    color: white;
+    background: var(--glass-bg);
+    border-radius: 50px;
+    box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.3), 
+                0 5px 20px rgba(255, 215, 0, 0.5);
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all var(--hover-time) ease-in-out;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid var(--glass-border);
+    overflow: hidden;
+}
+
+/* Gradient Overlay */
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--blue-gradient);
+    opacity: 0.15;
+    border-radius: 50px;
+    transition: opacity var(--hover-time) ease-in-out;
+}
+
+/* Button Text */
+button span {
+    position: relative;
+    z-index: 2;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glowing Hover Effect */
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 30px var(--hover-glow);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* Button Glow */
+button:hover::before {
+    opacity: 0.3;
+}
+
+/* Button Press Effect */
+button:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.5), 
+                0 4px 15px rgba(255, 165, 0, 0.6);
+}
+
+/* Button Shadow */
+.button-shadow {
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    filter: blur(10px);
+    background: var(--button-glow);
+    border-radius: 999vw;
+    transition: filter var(--hover-time) ease-in-out;
+    opacity: 0.5;
+}
+
+/* Button Shadow Hover */
+button:hover ~ .button-shadow {
+    filter: blur(15px);
+    opacity: 1;
+}
