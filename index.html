@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tania’s 21st Birthday Invitation</title>
+
+    <!-- External Styles -->
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #001F3F, #123456);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Background Parallax Effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.leonardo.ai/users/b56e6024-0c36-4ad2-ac0a-607a36e9d232/generations/782fa3a8-8534-4801-8022-18d623625a67/variations/Default_Stylish_and_exquisitely_attractive_vivid_Blue_and_glos_2_782fa3a8-8534-4801-8022-18d623625a67_0.jpg') no-repeat center center/cover;
+            filter: blur(10px);
+            transform: scale(1.1);
+            z-index: -1;
+        }
+
+        /* Glassmorphism Card */
+        .card {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 25px;
+            margin: 50px auto;
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Animated Heading */
+        .header {
+            font-size: 30px;
+            font-weight: bold;
+            text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8); }
+            100% { text-shadow: 0px 0px 18px rgba(255, 255, 255, 1); }
+        }
+
+        /* Animated RSVP Button */
+        .rsvp-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 15px;
+            font-size: 16px;
+            color: white;
+            background: linear-gradient(90deg, #ffcc00, #ff9900);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .rsvp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Smooth Fade In */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 3D Floating Particles -->
+    <canvas id="backgroundCanvas"></canvas>
+
+    <!-- Invitation Card -->
+    <div class="card">
+        <p class="header">🎉✨ You’re Cordially Invited to a Spectacular Khmer-Style Celebration! ✨🎉</p>
+        <p>📅 <strong>Date:</strong> Sunday, April 6th</p>
+        <p>⏰ <strong>Time:</strong> 2:00 PM</p>
+        <p>📍 <strong>Venue:</strong> 645 Coronado Ave, Long Beach, CA</p>
+
+        <p><strong>Dress in your finest sarong or traditional attire</strong> and immerse yourself in an afternoon of Khmer charm, delightful company, and exquisite flavors.</p>
+
+        <!-- RSVP Button -->
+        <a href="mailto:em_tatianna@yahoo.com?subject=RSVP for Tania’s 21st Birthday" class="rsvp-btn">Confirm Attendance</a>
+    </div>
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r136/three.min.js"></script>
+
+    <script>
+        // GSAP Animations
+        gsap.from(".card", { duration: 1.5, opacity: 0, y: 50, ease: "power2.out" });
+
+        // Parallax Background Effect
+        document.addEventListener("mousemove", (e) => {
+            let x = (e.clientX / window.innerWidth - 0.5) * 10;
+            let y = (e.clientY / window.innerHeight - 0.5) * 10;
+            document.body.style.backgroundPosition = `${x}px ${y}px`;
+        });
+
+        // 3D Floating Particles using Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("backgroundCanvas"), alpha: true });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 500;
+        const positions = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            positions[i] = (Math.random() - 0.5) * 10;
+        }
+
+        particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        const particlesMaterial = new THREE.PointsMaterial({ color: 0xffd700, size: 0.05 });
+        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particles);
+
+        camera.position.z = 5;
+
+        // Animate Particles
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+            particles.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animateParticles();
+
+        // Adjust Canvas on Window Resize
+        window.addEventListener("resize", () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+    </script>
+
+</body>
+</html>
