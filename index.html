@@ -288,10 +288,24 @@
 
 <!-- JavaScript to Open Email with Pre-Filled RSVP Content -->
 <script>
-    function rsvpEmail() {
-        window.location.href = "mailto:em_tatianna@yahoo.com?subject=RSVP for Tania’s 21st Birthday&body=Dear Chad & Tatianna,%0D%0A%0D%0AI would love to RSVP for Tania's 21st Birthday! Here are my details:%0D%0A%0D%0A👤 Full Name: %0D%0A👥 Guest Count: %0D%0A🥂 I will be bringing (drinks/appetizers): %0D%0A%0D%0A🎉 Looking forward to celebrating this special day!%0D%0A%0D%0AWith best regards,%0D%0A[Your Name Here]";
-    }
-</script>
+  function rsvpEmail() {
+    const subject = "RSVP for Tania’s 21st Birthday";
+    const body = `Dear Chad & Tatianna,
+
+I would love to RSVP for Tania's 21st Birthday! Here are my details:
+
+👤 Full Name:
+👥 Guest Count:
+🥂 I will be bringing (drinks/appetizers):
+
+🎉 Looking forward to celebrating this special day!
+
+With best regards,
+[Your Name Here]`;
+
+    // Fully encode the body after formatting it as a normal string
+    window.location.href = `mailto:em_tatianna@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 
 
@@ -301,7 +315,7 @@
 
     <p><strong>P.S.</strong> Don’t forget to bring your sarong and your brightest smile! 🌸</p>
   </div>
-
+      </script>
   <!-- Footer -->
   <footer>
     <p>© 2025 Tania’s 21st Birthday Celebration</p>
